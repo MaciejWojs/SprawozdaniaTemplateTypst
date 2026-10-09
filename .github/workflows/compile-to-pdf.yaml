@@ -19,7 +19,7 @@ jobs:
           typst compile main.typ
 
       - name: Compile example PDFs
-      - shell: bash
+        shell: bash
         run: |
           shopt -s nullglob
           for plik in przyklady/*.typ; do
