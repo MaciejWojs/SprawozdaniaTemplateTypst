@@ -1,0 +1,33 @@
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/maciejwojs/ubuntu-typst
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Compile main PDF
+        run: |
+          typst compile main.typ
+
+      - name: Compile example PDFs
+        run: |
+          shopt -s nullglob
+          for plik in przyklady/*.typ; do
+            typst compile --root . "$plik" "${plik%.typ}.pdf" 
+          done
+
+      - name: Release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            main.pdf
+            przyklady/*.pdf
