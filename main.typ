@@ -42,7 +42,7 @@ Ten rozdział pokazuje, jak wypełnić szablon sprawozdania. Całą treść, ł�
 
 == Plik główny
 
-Dane wpisuje się w `main.typ`, w wywołaniu `praca`. Wpisuje się pola, które mają być inne niż w szablonie. Nazwa uczelni, wydział, katedra oraz napis „SPRAWOZDANIE” są w szablonie. Strona tytułowa jest krótka: uczelnia, wydział, katedra, rodzaj, przedmiot, tytuł, autorzy, prowadzący oraz miejscowość i rok. Nagłówek strony bierze nazwę uczelni w jednej linii. Stopka składa się z rodzaju dokumentu i przedmiotu, na przykład „SPRAWOZDANIE - ZESPOŁOWE PRZEDSIĘWZIĘCIE INŻYNIERSKIE”.
+Dane wpisuje się w `main.typ`, w wywołaniu `praca`. Wpisuje się pola, które mają być inne niż w szablonie. Nazwa uczelni, wydział, katedra oraz napis „SPRAWOZDANIE” są w szablonie. Strona tytułowa jest krótka: uczelnia, wydział, katedra, rodzaj, przedmiot, tytuł, autorzy, prowadzący oraz miejscowość i rok. Nagłówek strony bierze nazwę uczelni w jednej linii. Stopka składa się z rodzaju dokumentu i przedmiotu, na przykład „SPRAWOZDANIE - ZESPOŁOWE PRZEDSIĘWZIĘCIE INŻYNIERSKIE”. Całą stopkę, razem z numerem strony, wyłącza `stopka: false`.
 
 #blok-kodu(
   "#show: praca.with(

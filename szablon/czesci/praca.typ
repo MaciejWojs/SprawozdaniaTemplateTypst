@@ -1,7 +1,8 @@
 // Marginesy, czcionka, numeracja i reguły całego dokumentu.
 
 #import "wspolne.typ": font-sans, font-mono, knobs-domyslne, polacz, stan-knobs
-#import "strona.typ": bez-pustych, jako-tekst, naglowek, stopka, w-linii
+#import "strona.typ": bez-pustych, jako-tekst, naglowek, w-linii
+#import "strona.typ": stopka as zloz-stopke
 #import "strona.typ": strona-tytulowa as zloz-strone
 #import "kod.typ": kod-w-akapicie
 #import "obiekty.typ": numer-w-sekcji, pokaz-figure
@@ -28,6 +29,7 @@
   strona-tytulowa: "rich",
   tabela-tytulowa: auto,
   przedmiot-zapis: "pierwsza",
+  stopka: true,
   nazwa-rysunku: [Rys.],
   nazwa-tabeli: [Tab.],
   nazwa-listingu: [Listing],
@@ -81,10 +83,14 @@
 
   set page(
     header: naglowek(w-linii(uczelnia)),
-    footer: stopka(
-      [#dokument - #przedmiot],
-      stronnicowanie: ustawienia.stronnicowanie,
-    ),
+    footer: if stopka {
+      zloz-stopke(
+        [#dokument - #przedmiot],
+        stronnicowanie: ustawienia.stronnicowanie,
+      )
+    } else {
+      none
+    },
   )
 
   set par(
