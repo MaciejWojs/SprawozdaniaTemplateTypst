@@ -25,7 +25,7 @@ To samo dla pozostałych plików `przyklady/*.typ`. Nie dodawaj plików PDF do c
 
 6. Otwórz pull request z opisem, co się zmienia i jak to sprawdzić.
 
-Tag `v*` uruchamia `.github/workflows/compile-to-pdf.yaml`. Zwykły push gałęzi tej akcji nie uruchamia. Nie wypychaj tagu wydania razem ze zwykłą poprawką.
+Tag `v*` uruchamia `.github/workflows/compile-to-pdf.yaml` tylko wtedy, gdy wskazuje commit z gałęzi `main`. Tag z innej gałęzi kończy akcję błędem i kompilacja się nie uruchamia. Zwykły push gałęzi tej akcji nie uruchamia. Nie wypychaj tagu wydania razem ze zwykłą poprawką.
 
 ## Treść tutorialu
 

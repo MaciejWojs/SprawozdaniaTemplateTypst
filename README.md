@@ -79,7 +79,7 @@ git tag v1.0.0
 git push origin v1.0.0
 ```
 
-Tag bez prefiksu `v` tej akcji nie uruchamia. Zwykły push commita też nie.
+Tag bez prefiksu `v` tej akcji nie uruchamia. Zwykły push commita też nie. Tag musi wskazywać commit, który jest na gałęzi `main`. Tag z innej gałęzi kończy akcję błędem i kompilacja się nie uruchamia.
 
 ## Licencja
 

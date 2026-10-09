@@ -141,7 +141,7 @@ Plik `.github/workflows/compile-to-pdf.yaml` uruchamia się po wypchnięciu tagu
 #blok-kodu("git tag v1.0.0
 git push origin v1.0.0", jezyk: "bash")
 
-Tag bez prefiksu `v` tej akcji nie uruchamia. Wypchnięcie samego commita też nie.
+Tag bez prefiksu `v` tej akcji nie uruchamia. Wypchnięcie samego commita też nie. Tag musi wskazywać commit z gałęzi `main`. Tag z innej gałęzi kończy akcję błędem i kompilacja się nie uruchamia.
 
 == Rysunki
 
