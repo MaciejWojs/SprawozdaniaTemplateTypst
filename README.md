@@ -80,3 +80,7 @@ git push origin v1.0.0
 ```
 
 Tag bez prefiksu `v` tej akcji nie uruchamia. Zwykły push commita też nie.
+
+## Licencja
+
+Kod szablonu i ta dokumentacja są na licencji MIT (`LICENSE`). Zasady zmian są w `CONTRIBUTING.md`.
