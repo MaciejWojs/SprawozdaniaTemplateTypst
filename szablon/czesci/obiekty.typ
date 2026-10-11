@@ -1,7 +1,24 @@
 // Rysunek, tabela, listing i odsyłacz w tekście.
 
 #import "kod.typ": blok-kodu
+#import "strona.typ": jako-tekst
 #import "wspolne.typ": stan-knobs
+
+#let _zalaczone = state("zpi-zalaczniki", ())
+
+// Dołącza plik do PDF. Ten sam plik dołącza się raz. `wlaczony: false` nic nie dodaje.
+#let zalacz(plik, wlaczony: true, opis: none) = context {
+  if not wlaczony { return }
+  if plik in _zalaczone.get() { return }
+  _zalaczone.update(stare => stare + (plik,))
+  let opis-tekst = if opis == none { "" } else { jako-tekst(opis).trim() }
+  pdf.attach(
+    plik,
+    relationship: "data",
+    mime-type: "text/plain",
+    description: if opis-tekst == "" { plik } else { opis-tekst },
+  )
+}
 
 #let _podpis(it, nazwa, rozmiar, interlinia) = {
   if it.caption == none { return }
@@ -82,7 +99,7 @@
   caption: tytul,
 )
 
-#let listing(podpis, ..args, plik: none, jezyk: none, numeracja: auto, kolory: (:)) = {
+#let listing(podpis, ..args, plik: none, jezyk: none, numeracja: auto, kolory: (:), zalacznik: auto) = {
   let kod = if args.pos().len() > 0 {
     args.pos().first()
   } else {
@@ -104,7 +121,19 @@
     none
   }
   figure(
-    blok-kodu(zrodlo, jezyk: lang, numeracja: numeracja, kolory: kolory),
+    {
+      context {
+        let dolacz = if zalacznik == auto {
+          stan-knobs.get().kod.zalacznik
+        } else {
+          zalacznik
+        }
+        if dolacz and plik != none {
+          zalacz(plik, opis: podpis)
+        }
+      }
+      blok-kodu(zrodlo, jezyk: lang, numeracja: numeracja, kolory: kolory)
+    },
     kind: "listing",
     supplement: [Listing],
     caption: podpis,
@@ -112,10 +141,11 @@
 }
 
 // Ścieżka od katalogu głównego projektu, z ukośnikiem na początku: "/kod/main.cpp".
-#let listing-plik(sciezka, podpis, jezyk: none, numeracja: auto, kolory: (:)) = listing(
+#let listing-plik(sciezka, podpis, jezyk: none, numeracja: auto, kolory: (:), zalacznik: auto) = listing(
   podpis,
-  read(sciezka),
+  plik: sciezka,
   jezyk: jezyk,
   numeracja: numeracja,
   kolory: kolory,
+  zalacznik: zalacznik,
 )

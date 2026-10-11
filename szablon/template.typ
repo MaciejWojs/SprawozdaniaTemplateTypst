@@ -30,6 +30,7 @@
 #let tabela = obiekty.tabela
 #let listing = obiekty.listing
 #let listing-plik = obiekty.listing-plik
+#let zalacz = obiekty.zalacz
 #let odnosnik = obiekty.odnosnik
 #let numer-w-sekcji = obiekty.numer-w-sekcji
 

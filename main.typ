@@ -84,7 +84,7 @@ Domyślne stronnicowanie to `"prosty"`, czyli sam numer strony. Zapis „2 z 13�
 
 W `knobs.tekst` są `rozmiar` (domyślnie 12 pt), `interlinia`, `czcionka`, `czcionka-kodu` i `kolor-kodu`. `interlinia` to ułamek rozmiaru, domyślnie 0,57. Z tego iloczynu biorą się odstępy akapitu, nagłówków i wzorów. Domyślny krój tekstu to Times New Roman, a gdy go nie ma w systemie — Liberation Sans. Blok kodu jest krojem Liberation Mono, w rozmiarze tekstu. Nazwa pliku w akapicie zostaje krojem tekstu i ma kolor `kolor-kodu`.
 
-Blok kodu domyślnie numeruje linie, ma tło `#f2f2eb` i nie ma ramki. W `knobs.kod` zmienia się `numeracja`, `tlo`, `kolor-tekstu`, `kolor-numeru`, `kolor-slowa`, `kolor-komentarza`, `kolor-napisu`, `ramka` i `kolor-ramki`. Jeden listing może to nadpisać argumentami `numeracja` i `kolory`, bez zmiany reszty dokumentu.
+Blok kodu domyślnie numeruje linie, ma tło `#f2f2eb` i nie ma ramki. W `knobs.kod` zmienia się `numeracja`, `tlo`, `kolor-tekstu`, `kolor-numeru`, `kolor-slowa`, `kolor-komentarza`, `kolor-napisu`, `ramka`, `kolor-ramki` i `zalacznik`. Jeden listing może to nadpisać argumentami `numeracja` i `kolory`, bez zmiany reszty dokumentu.
 
 #blok-kodu(
   "#let knobs = (
@@ -233,7 +233,7 @@ Kod #odnosnik(<listing-krotki>) zwraca zero.
   jezyk: "cpp",
 ) <listing-krotki>
 
-Dłuższy plik z katalogu `kod` wczytuje argument `plik`. Ścieżka zaczyna się ukośnikiem i jest liczona od katalogu głównego projektu. Jeden listing może wyłączyć numerację linii albo podać własne kolory: `numeracja: false`, `kolory: (tlo: rgb("#eeeeee"))`.
+Dłuższy plik z katalogu `kod` wczytuje argument `plik`. Ścieżka zaczyna się ukośnikiem i jest liczona od katalogu głównego projektu. Jeden listing może wyłączyć numerację linii albo podać własne kolory: `numeracja: false`, `kolory: (tlo: rgb("#eeeeee"))`. Oryginalny plik, razem z tabulatorami, dołącza się do PDF argumentem `zalacznik: true` albo ustawieniem `knobs.kod.zalacznik: true`. Domyślnie załącznik jest wyłączony. Sam plik, bez listingu, dołącza funkcja `zalacz`. Zaznaczenie kodu na stronie nadal nie wkleja tabulatorów; tabulatory są w załączniku.
 
 #blok-kodu("#listing(
   [Opis pliku],

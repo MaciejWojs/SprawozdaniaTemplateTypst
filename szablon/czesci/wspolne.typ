@@ -31,6 +31,7 @@
     kolor-napisu: rgb("#9400d1"),
     ramka: false,
     kolor-ramki: rgb("#aaaaaa"),
+    zalacznik: false,
   ),
 )
 
