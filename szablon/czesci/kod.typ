@@ -1,6 +1,6 @@
 // Blok kodu: kolory, numeracja linii, ramka.
 
-#import "wspolne.typ": czcionka-kodu, font-mono, polacz, stan-knobs, z-priorytetem
+#import "wspolne.typ": font-mono, polacz, stan-knobs, z-priorytetem
 
 #let _hex(kolor) = {
   let zapis = kolor.to-hex()
@@ -41,9 +41,8 @@
   if z.ends-with("\n") { z.slice(0, -1) } else { z }
 }
 
-// Czcionka kodu przy tym samym `em` jest optycznie mniejsza od tekstu.
-// Zwykły napis łamie się na spacjach; `raw` jest jednym pudełkiem i rozpycha wiersz.
-#let kod-w-akapicie(t) = context text(font: czcionka-kodu(), size: 1.2em, baseline: -0.04em, t)
+// Ta sama czcionka i ten sam rozmiar co akapit. Kolor tylko odróżnia nazwę.
+#let kod-w-akapicie(t) = context text(fill: stan-knobs.get().tekst.kolor-kodu, t)
 
 // Reguły `show` są w zwykłej funkcji, nie w `context`, żeby nie obejmowały kodu poza blokiem.
 #let _rysuj-kod(kod, jezyk, paleta, numery, interlinia, czcionka) = {

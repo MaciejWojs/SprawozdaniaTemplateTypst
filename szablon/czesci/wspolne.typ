@@ -19,6 +19,7 @@
     interlinia: 0.57,
     czcionka: "Times New Roman",
     czcionka-kodu: "Liberation Mono",
+    kolor-kodu: rgb("#4a4a4a"),
   ),
   kod: (
     numeracja: true,
