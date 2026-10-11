@@ -78,15 +78,22 @@ Inny napis w stopce i na stronie tytułowej podaje się argumentem `dokument`, n
 
 == Ustawienia składu
 
-Słownik `knobs` zmienia stronnicowanie, kolor łączy i blok kodu. Wpisuje się tylko pola, które mają się różnić od domyślnych. Pozostałe zostają.
+Słownik `knobs` zmienia stronnicowanie, kolor łączy, tekst i blok kodu. Wpisuje się tylko pola, które mają się różnić od domyślnych. Pozostałe zostają.
 
 Domyślne stronnicowanie to `"prosty"`, czyli sam numer strony. Zapis „2 z 13” włącza `"n-z-n"`. Łącza są w kolorze tekstu, bo `kolor-linku` ma wartość `none`. Inny kolor podaje się na przykład jako `kolor-linku: blue`.
+
+W `knobs.tekst` są `rozmiar` (domyślnie 12 pt), `interlinia`, `czcionka`, `czcionka-kodu` i `kolor-kodu`. `interlinia` to ułamek rozmiaru, domyślnie 0,57. Z tego iloczynu biorą się odstępy akapitu, nagłówków i wzorów. Domyślny krój tekstu to Times New Roman, a gdy go nie ma w systemie — Liberation Sans. Blok kodu jest krojem Liberation Mono, w rozmiarze tekstu. Nazwa pliku w akapicie zostaje krojem tekstu i ma kolor `kolor-kodu`.
 
 Blok kodu domyślnie numeruje linie, ma tło `#f2f2eb` i nie ma ramki. W `knobs.kod` zmienia się `numeracja`, `tlo`, `kolor-tekstu`, `kolor-numeru`, `kolor-slowa`, `kolor-komentarza`, `kolor-napisu`, `ramka` i `kolor-ramki`. Jeden listing może to nadpisać argumentami `numeracja` i `kolory`, bez zmiany reszty dokumentu.
 
 #blok-kodu(
   "#let knobs = (
   stronnicowanie: \"n-z-n\",
+  tekst: (
+    rozmiar: 12pt,
+    interlinia: 0.65,
+    czcionka: \"Times New Roman\",
+  ),
   kod: (
     numeracja: false,
     ramka: true,
@@ -100,7 +107,7 @@ Blok kodu domyślnie numeruje linie, ma tło `#f2f2eb` i nie ma ramki. W `knobs.
   jezyk: "typ",
 )
 
-Czcionka tekstu to Liberation Sans, a kodu Liberation Mono. Marginesy są równe, po 2,5 cm. Rozdział nie zaczyna nowej strony. Interlinii, nagłówka i stopki nie zmienia się w treści sprawozdania.
+Marginesy są równe, po 2,5 cm. Rozdział nie zaczyna nowej strony. Wyglądu nagłówka i stopki nie zmienia się w treści sprawozdania.
 
 == Rozdziały
 

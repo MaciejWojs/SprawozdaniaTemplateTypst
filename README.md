@@ -2,7 +2,7 @@
 
 Szablon sprawozdania na Wydziale Nauk Inżynieryjnych Akademii Nauk Stosowanych w Nowym Sączu. Strona tytułowa jest krótka, marginesy równe po 2,5 cm, a numer strony jest samą liczbą. Są rozdziały, literatura numeryczna oraz spisy rysunków, tabel i listingów.
 
-Czcionka tekstu to Liberation Sans, a kodu Liberation Mono.
+Czcionka tekstu to Times New Roman, a gdy jej nie ma — Liberation Sans. Kod w bloku jest Liberation Mono.
 
 ## Gdzie co zmienić
 
@@ -10,7 +10,7 @@ Dane projektu są w `main.typ`.
 
 - W `main.typ` podaje się tylko to, co różni się od domyślnych: zwykle tytuł, przedmiot, autorów i prowadzącego. Uczelnia, wydział, katedra i `dokument` („SPRAWOZDANIE”) są w szablonie. Nagłówek bierze nazwę uczelni. Stopka składa się z `dokument` i przedmiotu. Wyłącza ją `stopka: false`. Inny napis podaje się argumentem `dokument`. Strona tytułowa `"rich"` jest domyślna. `"prosty"` składa tabelę z tych samych pól; uczelnia i wydział są osobno. `przedmiot-zapis: "pierwsza"` pisze przedmiot z wielką pierwszą literą, a `"mala"` małymi literami. Przykłady stron są w `przyklady/`. Tytuł, autorzy i przedmiot są też metadanymi PDF.
 - Autorzy to lista napisów; puste wpisy są pomijane. `rok: auto` wstawia bieżący rok.
-- Słownik `knobs` ustawia stronnicowanie, kolor hiperłączy i blok kodu. Podaj tylko pola, które zmieniasz. `stronnicowanie: "prosty"` daje sam numer strony, a `"n-z-n"` zapis „2 z 13”. `kolor-linku: none` zostawia łącza w kolorze tekstu. W `knobs.kod` są `numeracja`, `ramka`, `kolor-ramki` oraz kolory tła, tekstu, numerów linii, słów kluczowych, komentarzy i napisów.
+- Słownik `knobs` ustawia stronnicowanie, kolor hiperłączy, tekst i blok kodu. Podaj tylko pola, które zmieniasz. `stronnicowanie: "prosty"` daje sam numer strony, a `"n-z-n"` zapis „2 z 13”. `kolor-linku: none` zostawia łącza w kolorze tekstu. W `knobs.tekst` są `rozmiar` (12 pt), `interlinia` (ułamek rozmiaru, domyślnie 0,57), `czcionka`, `czcionka-kodu` i `kolor-kodu`. W `knobs.kod` są `numeracja`, `ramka`, `kolor-ramki` oraz kolory tła, tekstu, numerów linii, słów kluczowych, komentarzy i napisów.
 - Pojedynczy listing może to nadpisać: `numeracja: false` albo `kolory: (tlo: rgb("#eeeeee"))`.
 
 Treść rozdziałów pisze się w `main.typ`, za spisem treści i przed bibliografią. Bibliografia domyślnie jest w `literatura.bib`. Inną ścieżkę podaje się tak: `#bibliografia(plik: "/inna/literatura.bib")`. Pozycja wchodzi do dokumentu tylko wtedy, gdy tekst ją cytuje (`#cite(<klucz>)`). Spis treści, literatura oraz spisy rysunków, tabel i listingów wywołuje się osobno. Każdy pomija się argumentem `wlaczony: false`. Pliki z kodem trzymaj w `kod/`. Rysunki trzymaj w `assets/<rozdzial>/`. Części składu są w `szablon/czesci/`: `wspolne.typ` (czcionki i knobs), `strona.typ` (strona tytułowa, nagłówek, stopka), `kod.typ` (blok kodu), `obiekty.typ` (rysunek, tabela, listing, odsyłacz), `spisy.typ` (spisy i literatura), `praca.typ` (marginesy i reguły dokumentu).
