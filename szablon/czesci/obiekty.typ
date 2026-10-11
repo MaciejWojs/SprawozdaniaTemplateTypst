@@ -1,11 +1,12 @@
 // Rysunek, tabela, listing i odsyłacz w tekście.
 
 #import "kod.typ": blok-kodu
+#import "wspolne.typ": stan-knobs
 
-#let _podpis(it, nazwa) = {
+#let _podpis(it, nazwa, rozmiar, interlinia) = {
   if it.caption == none { return }
-  set text(size: 10.5pt)
-  set par(leading: 0.35em, spacing: 0pt, first-line-indent: 0pt, justify: false)
+  set text(size: 0.875 * rozmiar)
+  set par(leading: interlinia, spacing: 0pt, first-line-indent: 0pt, justify: false)
   let cialo = it.caption.body
   grid(
     columns: (auto, 1fr),
@@ -19,17 +20,20 @@
   )
 }
 
-#let pokaz-figure(it, nazwa, podpis-nad: false) = {
+#let pokaz-figure(it, nazwa, podpis-nad: false) = context {
+  let tekst = stan-knobs.get().tekst
+  let rozmiar = tekst.rozmiar
+  let interlinia = tekst.interlinia * rozmiar
   set par(first-line-indent: 0pt, justify: false)
-  block(above: 14pt, below: 14pt, breakable: true)[
+  block(above: 2 * interlinia, below: 2 * interlinia, breakable: true)[
     #if podpis-nad [
-      #align(center, _podpis(it, nazwa))
-      #v(9pt)
+      #align(center, _podpis(it, nazwa, rozmiar, interlinia))
+      #v(1.3 * interlinia)
       #align(center, it.body)
     ] else [
       #align(center, it.body)
-      #v(6pt)
-      #align(center, _podpis(it, nazwa))
+      #v(interlinia)
+      #align(center, _podpis(it, nazwa, rozmiar, interlinia))
     ]
   ]
 }

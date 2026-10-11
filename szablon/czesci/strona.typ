@@ -1,6 +1,6 @@
 // Strona tytułowa, nagłówek i stopka.
 
-#import "wspolne.typ": font-sans, stan-knobs
+#import "wspolne.typ": czcionka-tekstu, stan-knobs
 
 #let _miesiace = (
   "stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca",
@@ -37,8 +37,8 @@
 #let bez-pustych(lista) = lista.filter(a => a.trim() != "")
 
 // Kursywa na środku i linia 0,4 pt.
-#let naglowek(tekst) = {
-  set text(font: font-sans, size: 10pt, style: "italic", hyphenate: false)
+#let naglowek(tekst) = context {
+  set text(font: czcionka-tekstu(), size: 10pt, style: "italic", hyphenate: false)
   set par(leading: 0.2em, spacing: 0pt, first-line-indent: 0pt, justify: false)
   align(center, tekst)
   v(0.35em)
@@ -58,8 +58,8 @@
 }
 
 // `stronnicowanie`: "prosty" (sam numer) albo "n-z-n". `auto` bierze wartość z knobs.
-#let stopka(opis, stronnicowanie: auto) = {
-  set text(font: font-sans, hyphenate: false)
+#let stopka(opis, stronnicowanie: auto) = context {
+  set text(font: czcionka-tekstu(), hyphenate: false)
   set par(leading: 0.15em, spacing: 0pt, first-line-indent: 0pt, justify: false)
   line(length: 100%, stroke: 0.4pt)
   v(0.35em)

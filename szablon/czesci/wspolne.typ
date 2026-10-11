@@ -1,12 +1,25 @@
 // Czcionki i przełączniki wspólne dla całego szablonu.
 
-#let font-sans = ("Liberation Sans")
+#let font-sans = ("Times New Roman", "Liberation Sans")
 #let font-mono = ("Liberation Mono", "DejaVu Sans Mono", "Courier New")
 
+// Priorytetowa nazwa staje pierwsza. Reszta listy zostaje zapasem, bez powtórki.
+#let z-priorytetem(priorytet, lista) = {
+  (priorytet,) + lista.filter(nazwa => nazwa != priorytet)
+}
+
 // W main.typ można podać tylko zmieniane pola.
+// `interlinia` to ułamek `rozmiar`. Odstępy akapitu, nagłówków i wzorów biorą się z tego iloczynu.
+// `czcionka` i `czcionka-kodu` są próbowane przed zapasowymi krojami.
 #let knobs-domyslne = (
   stronnicowanie: "prosty",
   kolor-linku: none,
+  tekst: (
+    rozmiar: 12pt,
+    interlinia: 0.57,
+    czcionka: "Times New Roman",
+    czcionka-kodu: "Liberation Mono",
+  ),
   kod: (
     numeracja: true,
     tlo: rgb("#f2f2eb"),
@@ -21,6 +34,9 @@
 )
 
 #let stan-knobs = state("zpi-knobs", knobs-domyslne)
+
+#let czcionka-tekstu() = z-priorytetem(stan-knobs.get().tekst.czcionka, font-sans)
+#let czcionka-kodu() = z-priorytetem(stan-knobs.get().tekst.czcionka-kodu, font-mono)
 
 #let polacz(bazowe, nadpisane) = {
   let wynik = bazowe
